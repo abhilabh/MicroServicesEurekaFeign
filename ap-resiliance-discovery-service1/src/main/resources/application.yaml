@@ -1,0 +1,43 @@
+server:
+ port: 9595
+ 
+spring:
+ application:
+  name: ap-service1-app
+ profiles:
+  active: production
+ jackson:
+  serialization: 
+    indent-output: true
+ 
+management:
+ endpoints:
+  web:
+    exposure:
+      include: "*"
+ enpoint:
+  health:
+    show-details: always 
+eureka:
+ instance:
+  ip-address: true
+  metadata-map:
+    user.name: ${spring.security.user.name}
+    user.password: ${spring.security.user.password}
+ client:
+  enabled: true
+  register-with-eureka: true
+  service-url: 
+    default-zone: http://localhost:8761/eureka
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5000
+    instances:
+      greetdemo:
+        baseConfig: default
+
+
+      
