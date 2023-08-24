@@ -20,7 +20,7 @@ public class LineItems {
     private int quantity;
     private Long price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "cart_id")
     @JsonIgnore
     private Cart cart;

@@ -26,11 +26,14 @@ public interface InventoryRoutes {
 
 	@GetMapping("/app/inventory/{id}")
 	public ResponseEntity<Inventory> getInventory(@PathVariable("id") Integer id);
+	
+	@GetMapping("/app/inventory/product/{id}")
+	public ResponseEntity<Inventory> geInventoryByProductId(@PathVariable("id") Integer productId);
 
 	@PutMapping("/app/inventory/{id}")
 	public ResponseEntity<Inventory> updateInventory(@RequestBody Inventory inventory, @PathVariable("id") Integer id);
 
 	@DeleteMapping("/app/inventory/{id}")
-	public ResponseEntity<?> deleteInventory(@PathVariable("id") Integer id);
+	public ResponseEntity<String> deleteInventory(@PathVariable("id") Integer id);
 
 }

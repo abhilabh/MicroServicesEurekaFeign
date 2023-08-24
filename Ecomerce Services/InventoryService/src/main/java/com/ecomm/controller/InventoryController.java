@@ -42,6 +42,11 @@ public class InventoryController {
 	public ResponseEntity<?> getInventory(@PathVariable("id") Integer id) {
 		return inventoryService.getInventory(id);
 	}
+	
+	@GetMapping("/inventory/product/{id}")
+	public ResponseEntity<?> getInventoryByProductId(@PathVariable("id") Integer id) {
+		return inventoryService.getInventoryByProductId(id);
+	}
 
 	@PutMapping("/inventory/{id}")
 	public ResponseEntity<?> updateInventory(@RequestBody Inventory inventory, @PathVariable("id") Integer id) {

@@ -1,5 +1,6 @@
 package com.ecomm.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
@@ -11,9 +12,8 @@ import com.ecomm.model.Product;
 
 public interface ShoppingService {
 	public ResponseEntity<Map<String, Integer>> addProduct(Product product);
-	public Customer addCustomer(Customer customer);
-	public void addToCard(Cart cart);
-	public void createOrder(Order order);
-	public void getOrder(Integer id);
-
+	public ResponseEntity<Map<String, Integer>> addCustomer(Customer customer);
+	public ResponseEntity<Cart> addToCard(Cart cart, int customerId);
+	public ResponseEntity<Order> createOrder(int customerId);
+	public ResponseEntity<List<Order>> getOrders(Integer id);
 }

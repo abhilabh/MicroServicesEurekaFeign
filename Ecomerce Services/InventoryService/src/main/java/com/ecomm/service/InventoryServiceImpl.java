@@ -54,4 +54,11 @@ public class InventoryServiceImpl implements InventoryService {
 		return new ResponseEntity<>("Deleted", HttpStatus.OK);
 	}
 
+	@Override
+	public ResponseEntity<?> getInventoryByProductId(Integer productId) {
+		// TODO Auto-generated method stub
+		 Inventory inventory = inventoryRepository.findByProductId(productId);
+		 return new ResponseEntity<>(inventory, HttpStatus.OK);
+	}
+
 }

@@ -19,16 +19,16 @@ public interface CustomerOrderRoutes {
 	
 
 	@PostMapping("/app/order")
-	public ResponseEntity<?> addOrder(@RequestBody Order order);
+	public ResponseEntity<Order> addOrder(@RequestBody Order order);
 
 	@GetMapping("/app/order/{id}")
-	public ResponseEntity<?> getOrder(@PathVariable("id") Integer id);
+	public ResponseEntity<Order> getOrder(@PathVariable("id") Integer id);
 
 	@PutMapping("/app/order/{id}")
-	public ResponseEntity<?> updateOrder(@RequestBody Order order, @PathVariable("id") Integer id);
+	public ResponseEntity<Order> updateOrder(@RequestBody Order order, @PathVariable("id") Integer id);
 
 	@DeleteMapping("/app/order/{id}")
-	public ResponseEntity<?> deleteOrder(@PathVariable("id") Integer id);
-
+	public ResponseEntity<String> deleteOrder(@PathVariable("id") Integer id);
+		
 }
 

@@ -1,5 +1,6 @@
 package com.ecomm.service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,11 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public ResponseEntity<?> addOrder(Order order) {
+		if (order.getLineItems() != null) {
+			order.getLineItems().forEach(x-> x.setOrderC(order));
+		}
 		orderRepository.save(order);
+//		System.out.println(order);
 		return new ResponseEntity<>(order, HttpStatus.CREATED);
 	}
 
@@ -28,11 +33,10 @@ public class OrderServiceImpl implements OrderService {
 		// TODO Auto-generated method stub
 		Optional<Order> orderOptional = orderRepository.findById(id);
 		Order order = null;
-		System.out.println(orderOptional.isPresent());
 		if (orderOptional.isPresent()) {
 			order = orderOptional.get();
 		} else {
-//			throw new OrderException.OrderIdNotFound("Id not found");
+			throw new OrderException.OrderIdNotFound("Id not found");
 		}
 		return new ResponseEntity<>(order, HttpStatus.OK);
 	}
@@ -42,6 +46,11 @@ public class OrderServiceImpl implements OrderService {
 		if (!orderRepository.existsById(id)) {
 			throw new OrderException.OrderIdNotFound("Id not found");
 		}
+		if (order.getLineItems() == null)
+			order.setLineItems(new ArrayList<>());
+		else 
+			order.getLineItems().forEach(x-> x.setOrderC(order));
+		order.setOrderId(id);
 		orderRepository.save(order);
 		return new ResponseEntity<>(order, HttpStatus.OK);
 	}

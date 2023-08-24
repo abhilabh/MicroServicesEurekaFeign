@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Entity
 public class CustomerCart {
 	@Id
-	int id;
 	int cutomerId;
 	int cartId;
 }

@@ -23,16 +23,16 @@ public interface CustomerRoutes {
 	
 
 	@PostMapping("/app/customer")
-	public ResponseEntity<?> addCustomer(@RequestBody Customer customer);
+	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer);
 
 	@GetMapping("/app/customer/{id}")
-	public ResponseEntity<?> getCustomer(@PathVariable("id") Integer id);
+	public ResponseEntity<Customer> getCustomer(@PathVariable("id") Integer id);
 
 	@PutMapping("/app/customer/{id}")
-	public ResponseEntity<?> updateCustomer(@RequestBody Customer customer, @PathVariable("id") Integer id);
+	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @PathVariable("id") Integer id);
 
 	@DeleteMapping("/app/customer/{id}")
-	public ResponseEntity<?> deleteCustomer(@PathVariable("id") Integer id);
+	public ResponseEntity<String> deleteCustomer(@PathVariable("id") Integer id);
 
 }
 

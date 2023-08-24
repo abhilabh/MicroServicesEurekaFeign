@@ -22,16 +22,16 @@ public interface CustomerCartRoutes {
 	
 
 	@PostMapping("/app/cart")
-	public ResponseEntity<?> addCart(@RequestBody Cart cart);
+	public ResponseEntity<Cart> addCart(@RequestBody Cart cart);
 
 	@GetMapping("/app/cart/{id}")
-	public ResponseEntity<?> getCart(@PathVariable("id") Integer id);
+	public ResponseEntity<Cart> getCart(@PathVariable("id") Integer id);
 
 	@PutMapping("/app/cart/{id}")
-	public ResponseEntity<?> updateCart(@RequestBody Cart cart, @PathVariable("id") Integer id);
+	public ResponseEntity<Cart> updateCart(@RequestBody Cart cart, @PathVariable("id") Integer id);
 
 	@DeleteMapping("/app/cart/{id}")
-	public ResponseEntity<?> deleteCart(@PathVariable("id") Integer id);
+	public ResponseEntity<String> deleteCart(@PathVariable("id") Integer id);
 
 }
 

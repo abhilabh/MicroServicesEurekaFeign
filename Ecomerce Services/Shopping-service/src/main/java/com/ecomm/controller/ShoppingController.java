@@ -1,5 +1,6 @@
 package com.ecomm.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,23 +34,23 @@ public class ShoppingController {
 	}
 	
 	@PostMapping("/customer")
-	public Customer addCustomer(@RequestBody Customer customer) {
-		Customer resCustomer =  shoppingService.addCustomer(customer);
+	public ResponseEntity<Map<String, Integer>> addCustomer(@RequestBody Customer customer) {
+		ResponseEntity<Map<String, Integer>> resCustomer =  shoppingService.addCustomer(customer);
 		return resCustomer;
 	}
 	
 	@PutMapping("/customer/{customerId}/cart")
 	
 	public void addToCart(@RequestBody Cart cart, @PathVariable("customerId") int customerId) {
-		shoppingService.addToCard(cart);
+		shoppingService.addToCard(cart, customerId);
 	}
 	@PostMapping("/customer/{customerId}/order")
 	public void placeOrder(@RequestBody Order order, @PathVariable("customerId") int customerId) {
-		shoppingService.createOrder(order);
+		shoppingService.createOrder(customerId);
 	}
 	
 	@GetMapping("/customer/{customerId}/orders")
-	public void getOrder(@PathVariable("customerId") int customerId) {
-		shoppingService.getOrder(customerId);
+	public ResponseEntity<List<Order>> getOrders(@PathVariable("customerId") int customerId) {
+		return shoppingService.getOrders(customerId);
 	}
 }

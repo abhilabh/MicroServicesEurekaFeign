@@ -1,5 +1,6 @@
 -- Insert sample carts
-INSERT INTO customer_order (order_id) VALUES (1), (2);
+INSERT INTO customer_order DEFAULT VALUES;
+INSERT INTO customer_order DEFAULT VALUES;
 
 -- Insert sample line items
 INSERT INTO line_items (product_id, product_name, quantity, price, order_id) VALUES

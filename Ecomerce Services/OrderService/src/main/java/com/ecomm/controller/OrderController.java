@@ -34,7 +34,7 @@ public class OrderController {
 
 	@PostMapping("/order")
 	public ResponseEntity<?> addOrder(@RequestBody Order order) {
-		System.out.println(order);
+//		System.out.println(order);
 		return orderService.addOrder(order);
 	}
 

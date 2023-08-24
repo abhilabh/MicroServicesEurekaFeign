@@ -17,7 +17,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderC")
+    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "orderC", orphanRemoval=true)
     private List<LineItems> lineItems;
 
 }

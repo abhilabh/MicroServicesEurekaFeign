@@ -1,7 +1,6 @@
 -- Insert sample carts
-INSERT INTO cart (cart_id) VALUES
-    (1),
-    (2);
+INSERT INTO cart DEFAULT VALUES;
+INSERT INTO cart DEFAULT VALUES;
 
 -- Insert sample line items
 INSERT INTO line_items (product_id, product_name, quantity, price, cart_id) VALUES

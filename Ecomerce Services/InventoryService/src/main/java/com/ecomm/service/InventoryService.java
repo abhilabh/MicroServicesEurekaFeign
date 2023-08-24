@@ -10,5 +10,6 @@ public interface InventoryService {
 	public ResponseEntity<?> getInventory(Integer id);
 	public ResponseEntity<?> updateInventory(Inventory inventory, Integer id);
 	public ResponseEntity<?> deleteInventory(Integer id);
+	public ResponseEntity<?> getInventoryByProductId(Integer productId);
 
 }
